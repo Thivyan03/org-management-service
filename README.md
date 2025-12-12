@@ -168,21 +168,6 @@ Request
   "password": "alpha123"
 }
 
-### Architecture Diagram
-flowchart TD
-
-    A[Client] --> B(FastAPI Backend)
-    
-    B --> C[(Master Database)]
-    
-    B --> D[(Dynamic org_<name> Collections)]
-    
-    E[Admin Login] --> B
-    
-    C -->|Metadata| B
-    
-    D -->|Per-org Data| B
-
 ### Design Choices & Scalability Notes
 
 * Simple and clear tenant isolation
