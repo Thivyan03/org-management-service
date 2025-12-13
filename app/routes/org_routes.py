@@ -12,17 +12,14 @@ from ..dependencies.auth import get_current_admin
 router = APIRouter()
 service = OrgService()
 
-# CREATE
 @router.post("/org/create", response_model=OrganizationResponse, status_code=201)
 def create_organization(data: OrganizationCreate):
     return service.create_org(data)
 
-# GET
 @router.get("/org/get", response_model=OrganizationResponse)
 def get_org(organization_name: str = Query(...)):
     return service.get_org(organization_name)
 
-# UPDATE (JWT Protected)
 @router.put("/org/update", response_model=UpdateResponse, status_code=200)
 def update_org(
     data: OrganizationUpdate,
@@ -30,7 +27,6 @@ def update_org(
 ):
     return service.update_org(data, current_admin)
 
-# DELETE (JWT Protected)
 @router.delete("/org/delete", response_model=DeleteResponse, status_code=200)
 def delete_org(
     organization_name: str = Query(...),
