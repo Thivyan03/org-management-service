@@ -5,7 +5,6 @@ from fastapi.openapi.utils import get_openapi
 
 app = FastAPI(title="Organization Management Service")
 
-# Include Routers
 app.include_router(org_router)
 app.include_router(auth_router)
 
@@ -13,7 +12,6 @@ app.include_router(auth_router)
 def home():
     return {"message": "Backend running successfully!"}
 
-# ---- Add THIS ----
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
